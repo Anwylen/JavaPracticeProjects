@@ -5,41 +5,15 @@ public class CalculadoraApp {
         Scanner consola = new Scanner(System.in);
         while (true) {
             System.out.println("**** Aplicación Calculadora ****");
-            // Mostrar el menú
-            System.out.println("1. Suma \n2. Resta \n3. Multiplicación \n4. División \n5. Salir");
-            System.out.print("¿Operación a realizar?");
+            mostrarMenu();
             try {
                 var operacion = Integer.parseInt(consola.nextLine());
                 //Revisar que este dentro de las opciones mencionadas
                 if (operacion >= 1 && operacion <= 4) {
-                    System.out.println("Proporcione valor de operando1: ");
-                    var operando1 = Integer.parseInt(consola.nextLine());
-                    System.out.println("Proporcione valor de operando2: ");
-                    var operando2 = Integer.parseInt(consola.nextLine());
-                    int resultado;
-                    switch (operacion) {
-                        case 1 -> { // Suma
-                            resultado = operando1 + operando2;
-                            System.out.println("Resultado de la suma es: " + resultado);
-                        }
-                        case 2 -> { // Resta
-                            resultado = operando1 - operando2;
-                            System.out.println("Resultado de la resta es: " + resultado);
-                        }
-                        case 3 -> { // Multiplicación
-                            resultado = operando1 * operando2;
-                            System.out.println("Resultado de la multilplicación es: " + resultado);
-                        }
-                        case 4 -> { // División
-                            resultado = operando1 / operando2;
-                            System.out.println("Resultado de la división es: " + resultado);
-                        }
-                        default -> {
-                            System.out.println("Opreación errronea " + operacion);
-                        }
-
-                    }
-                } else if (operacion == 5) { //Salir
+                    //ejecutamos la operacion deseada
+                    ejecutarOperacion(operacion, consola);
+                }
+                else if (operacion == 5) { //Salir
                     System.out.println("Hasta pronto...");
                     break;
                 } else {
@@ -54,4 +28,39 @@ public class CalculadoraApp {
         } //Fin While
 
     } //Fin main
+
+    private static void mostrarMenu(){ //Funcion de mostrar menu
+        // Mostrar el menú
+        System.out.println("1. Suma \n2. Resta \n3. Multiplicación \n4. División \n5. Salir");
+        System.out.print("¿Operación a realizar?");
+    }
+
+    private static void ejecutarOperacion(int operacion, Scanner consola) { //Funcion de ejecutar operacion
+        System.out.println("Proporcione valor de operando1: ");
+        var operando1 = Double.parseDouble(consola.nextLine());
+        System.out.println("Proporcione valor de operando2: ");
+        var operando2 = Double.parseDouble(consola.nextLine());
+        double resultado;
+        switch (operacion) {
+            case 1 -> { // Suma
+                resultado = operando1 + operando2;
+                System.out.println("Resultado de la suma es: " + resultado);
+            }
+            case 2 -> { // Resta
+                resultado = operando1 - operando2;
+                System.out.println("Resultado de la resta es: " + resultado);
+            }
+            case 3 -> { // Multiplicación
+                resultado = operando1 * operando2;
+                System.out.println("Resultado de la multilplicación es: " + resultado);
+            }
+            case 4 -> { // División
+                resultado = operando1 / operando2;
+                System.out.println("Resultado de la división es: " + resultado);
+            }
+            default -> {
+                System.out.println("Opreación errronea " + operacion);
+            }
+        }
+    }
 }
